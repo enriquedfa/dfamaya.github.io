@@ -77,6 +77,12 @@ h2 {
   letter-spacing: -0.01em;
 }
 
+h3 {
+  font-size: 1.05rem;
+  margin: 24px 0 8px;
+  letter-spacing: -0.01em;
+}
+
 p, li { color: var(--text); }
 
 .muted { color: var(--muted); }
@@ -90,6 +96,29 @@ p, li { color: var(--text); }
 }
 
 .card h2:first-child { margin-top: 0; }
+.card h3:first-child { margin-top: 0; }
+
+.card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 0.95rem;
+}
+
+.card thead th { background: var(--bg); }
+
+.card th,
+.card td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
 a { color: var(--accent); }
 
