@@ -12,13 +12,22 @@ Published at: <https://enriquedfa.github.io/dfamaya.github.io/>
 
 ### Wear OS Watch Faces
 
-- `privacy.html` — privacy policy (covers all watch faces by dfamaya)
-- `support.html` — support / contact info
+- `watchfaces/index.html` — app overview
+- `watchfaces/privacy.html` — privacy policy (covers all watch faces by dfamaya)
+- `watchfaces/support.html` — support / contact info
 
 ### Brief
 
 - `brief/index.html` — app overview
 - `brief/privacy.html` — privacy policy
+
+### Redirect stubs
+
+The watch-face pages used to live at the repo root. To keep any URLs already
+submitted to Google Play working, the old paths now redirect to their new home:
+
+- `privacy.html` → `watchfaces/privacy.html`
+- `support.html` → `watchfaces/support.html`
 
 ## Play Store URLs
 
@@ -26,8 +35,8 @@ When submitting an app on Google Play, use:
 
 **Wear OS Watch Faces**
 
-- Privacy policy URL: `https://dfamaya.github.io/privacy.html`
-- Support / website URL: `https://dfamaya.github.io/support.html` (or the root)
+- Privacy policy URL: `https://dfamaya.github.io/watchfaces/privacy.html`
+- Support / website URL: `https://dfamaya.github.io/watchfaces/support.html` (or the root)
 
 **Brief**
 
@@ -35,6 +44,13 @@ When submitting an app on Google Play, use:
 - Support / website URL: `https://dfamaya.github.io/brief/` (or the root)
 
 **Contact email:** `developerdfa@gmail.com`
+
+> **Heads up — verify the base URL.** These examples assume the site is served
+> at `https://dfamaya.github.io/`. This repo currently has no `CNAME`, so if it
+> is owned by the `enriquedfa` account it actually publishes under
+> `https://enriquedfa.github.io/dfamaya.github.io/…`. Use whichever base
+> actually resolves, then append the paths above. The old root `privacy.html` /
+> `support.html` URLs still redirect to the `watchfaces/` versions.
 
 ## Adding another app
 
