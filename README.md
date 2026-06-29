@@ -2,7 +2,7 @@
 
 Static site for dfamaya's Wear OS watch faces — landing page, privacy policy, and support.
 
-Published at: <https://dfamaya.github.io/>
+Published at: <https://enriquedfa.github.io/dfamaya.github.io/>
 
 ## Pages
 
