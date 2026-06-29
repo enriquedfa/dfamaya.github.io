@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Brief</title>
+  <meta name="description" content="Privacy policy for Brief, the 'at a glance' Wear OS complication and tile by dfamaya." />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site">
+    <a class="brand" href="../">dfamaya</a>
+    <nav>
+      <a href="../#apps">Apps</a>
+      <a href="mailto:developerdfa@gmail.com">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Privacy Policy &mdash; Brief</h1>
+    <p class="muted">Last updated: 27 June 2026</p>
+
+    <div class="card">
+      <p>
+        Brief is a Wear OS &ldquo;at a glance&rdquo; app: a watch complication
+        and tile that show the single most relevant thing right now &mdash; your
+        now-playing music, your next calendar event, the current weather, a
+        scheduled reminder, or today&rsquo;s date. It comes in two parts: the
+        <strong>watch app</strong> (which only displays what it&rsquo;s told) and
+        the <strong>phone companion</strong> (which gathers the information and
+        sends it to your watch).
+      </p>
+      <p>
+        This policy explains exactly what Brief accesses, why, and where it goes.
+        The short version: <strong>Brief has no servers, no account, no
+        analytics, and no ads. Almost everything stays on your own
+        devices.</strong> The only thing that ever leaves your phone is an
+        approximate location, sent to a weather provider so it can return your
+        local forecast.
+      </p>
+
+      <h2>Who is responsible</h2>
+      <p>
+        Brief is an independent app. The developer is the &ldquo;data
+        controller&rdquo; for the purposes of this policy. Questions or requests:
+        <a href="mailto:developerdfa@gmail.com">developerdfa@gmail.com</a>.
+      </p>
+
+      <h2>What Brief accesses, and why</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Where it&rsquo;s read</th>
+              <th>Why</th>
+              <th>Permission</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Calendar events</strong> (title, time, location)</td>
+              <td>Your phone, read-only</td>
+              <td>To show your next event on the watch</td>
+              <td><code>READ_CALENDAR</code></td>
+            </tr>
+            <tr>
+              <td><strong>Approximate location</strong></td>
+              <td>Your phone</td>
+              <td>To fetch your local weather forecast</td>
+              <td><code>ACCESS_COARSE_LOCATION</code>, <code>ACCESS_BACKGROUND_LOCATION</code></td>
+            </tr>
+            <tr>
+              <td><strong>Active media session</strong> (track title, artist, play/pause state, app)</td>
+              <td>Your phone</td>
+              <td>To show what&rsquo;s playing and let you play/pause from the watch</td>
+              <td>Notification access (<code>BIND_NOTIFICATION_LISTENER_SERVICE</code>)</td>
+            </tr>
+            <tr>
+              <td><strong>Reminders you create</strong> (text, time, icon)</td>
+              <td>Authored by you in the app</td>
+              <td>To show your own scheduled nudges</td>
+              <td>&mdash;</td>
+            </tr>
+            <tr>
+              <td><strong>Your settings</strong> (priority order, units, masking, etc.)</td>
+              <td>Authored by you in the app</td>
+              <td>To configure what shows and how</td>
+              <td>&mdash;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Brief requests notification access <strong>only to read the active media
+        session</strong> (so it can show now-playing and forward play/pause). It
+        does not read, store, or transmit the content of your other
+        notifications.
+      </p>
+
+      <h2>What leaves your device</h2>
+      <ul>
+        <li>
+          <strong>Approximate location &rarr; weather provider.</strong> When
+          weather is enabled, Brief sends coordinates to
+          <strong>Open-Meteo</strong> (<code>open-meteo.com</code>) over an
+          encrypted (HTTPS) connection to retrieve the forecast. Open-Meteo
+          requires no account or API key. See Open-Meteo&rsquo;s own privacy
+          terms at
+          <a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">https://open-meteo.com/en/terms</a>.
+          If you set a manual location instead of using your phone&rsquo;s
+          location, only that manual location is sent. You can disable weather
+          entirely.
+        </li>
+        <li>
+          <strong>A location search you type</strong> (when choosing a manual
+          location) is sent to Open-Meteo&rsquo;s geocoding service to turn the
+          place name into coordinates.
+        </li>
+      </ul>
+      <p>
+        Nothing else is sent off your devices. There is <strong>no Brief
+        server</strong> &mdash; calendar titles, media details, reminders, and
+        settings are never uploaded to the developer or any third party.
+      </p>
+
+      <h2>Between your phone and your watch</h2>
+      <p>
+        Brief&rsquo;s phone companion sends the resolved glance, your settings,
+        and media play/pause commands to your paired watch over the
+        <strong>Wear OS Data Layer</strong> (provided by Google Play Services).
+        This travels directly between your own paired devices over their
+        encrypted Bluetooth/Wi-Fi connection. It is not routed through a Brief
+        server.
+      </p>
+      <p>
+        If you turn on <strong>&ldquo;mask titles,&rdquo;</strong> event titles
+        and locations are replaced with a generic placeholder
+        <strong>before</strong> they ever leave the phone, so the real text is
+        never sent to the watch.
+      </p>
+
+      <h2>Where data is stored, and for how long</h2>
+      <ul>
+        <li>
+          All data Brief keeps lives <strong>on-device</strong> in private app
+          storage (Android DataStore): the last resolved glance, a cached weather
+          forecast, and your settings.
+        </li>
+        <li>
+          The cached weather forecast and now-playing details <strong>expire
+          automatically</strong> (e.g. stale weather and paused/old media are
+          dropped within minutes to hours).
+        </li>
+        <li>
+          This private storage is <strong>excluded from Android cloud backup and
+          device-to-device transfer</strong>, so your weather coordinates and the
+          keywords you choose to hide are not copied off the device by the system
+          backup.
+        </li>
+        <li>Uninstalling Brief removes all of this on-device data.</li>
+      </ul>
+
+      <h2>Data sharing and sale</h2>
+      <p>
+        Brief does <strong>not</strong> sell your data, share it for advertising,
+        or use it for any purpose other than showing your glance. There are no
+        third-party analytics, advertising, or tracking SDKs in the app. The only
+        third party that receives anything is the weather provider (Open-Meteo),
+        and only the approximate location needed to return a forecast.
+      </p>
+
+      <h2>Permissions, in plain terms</h2>
+      <ul>
+        <li>
+          <strong>Calendar (read-only):</strong> read your upcoming events to
+          show the next one. Brief never creates, edits, or deletes your events.
+        </li>
+        <li>
+          <strong>Location (approximate, including in the background):</strong>
+          fetch local weather. Background access lets the forecast refresh while
+          the app isn&rsquo;t open; you can avoid it by setting a manual location
+          or disabling weather.
+        </li>
+        <li>
+          <strong>Notification access:</strong> read the active media session for
+          now-playing and transport controls.
+        </li>
+        <li>
+          <strong>Exact alarms / ignore battery optimizations / run at
+          startup:</strong> wake the companion at the right moments (e.g. when an
+          event is about to start) so the glance is timely, and restore
+          scheduling after a reboot.
+        </li>
+      </ul>
+      <p>
+        You can revoke any of these in Android Settings at any time; Brief
+        degrades gracefully (the affected source simply stops appearing).
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        Brief is not directed at children and does not knowingly collect data
+        from children.
+      </p>
+
+      <h2>Security</h2>
+      <p>
+        Data stays in private, app-scoped on-device storage; network requests use
+        HTTPS; and the phone&harr;watch link relies on the platform&rsquo;s
+        encrypted, pairing-authenticated channel.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        If this policy changes, the &ldquo;Last updated&rdquo; date above will
+        change and the revised policy will be posted at the same location.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        For any privacy question or request, contact
+        <a href="mailto:developerdfa@gmail.com">developerdfa@gmail.com</a>.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> dfamaya
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
