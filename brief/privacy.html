@@ -25,14 +25,15 @@
 
   <main>
     <h1>Privacy Policy &mdash; Brief</h1>
-    <p class="muted">Last updated: 27 June 2026</p>
+    <p class="muted">Last updated: 18 July 2026</p>
 
     <div class="card">
       <p>
         Brief is a Wear OS &ldquo;at a glance&rdquo; app: a watch complication
         and tile that show the single most relevant thing right now &mdash; your
-        now-playing music, your next calendar event, the current weather, a
-        scheduled reminder, or today&rsquo;s date. It comes in two parts: the
+        now-playing music, an alert from an app you choose, your next calendar
+        event, a low phone-battery warning, the current weather, a scheduled
+        reminder, or today&rsquo;s date. It comes in two parts: the
         <strong>watch app</strong> (which only displays what it&rsquo;s told) and
         the <strong>phone companion</strong> (which gathers the information and
         sends it to your watch).
@@ -41,9 +42,11 @@
         This policy explains exactly what Brief accesses, why, and where it goes.
         The short version: <strong>Brief has no servers, no account, no
         analytics, and no ads. Almost everything stays on your own
-        devices.</strong> The only thing that ever leaves your phone is an
-        approximate location, sent to a weather provider so it can return your
-        local forecast.
+        devices.</strong> The only thing that ever leaves your devices for a
+        third party is an approximate location &mdash; rounded to about a
+        kilometre &mdash; sent to a weather provider so it can return your local
+        forecast. Everything else &mdash; including whatever is shown as a glance
+        &mdash; only ever travels between your own phone and your paired watch.
       </p>
 
       <h2>Who is responsible</h2>
@@ -72,7 +75,7 @@
               <td><code>READ_CALENDAR</code></td>
             </tr>
             <tr>
-              <td><strong>Approximate location</strong></td>
+              <td><strong>Approximate location</strong> (rounded to ~1 km)</td>
               <td>Your phone</td>
               <td>To fetch your local weather forecast</td>
               <td><code>ACCESS_COARSE_LOCATION</code>, <code>ACCESS_BACKGROUND_LOCATION</code></td>
@@ -82,6 +85,24 @@
               <td>Your phone</td>
               <td>To show what&rsquo;s playing and let you play/pause from the watch</td>
               <td>Notification access (<code>BIND_NOTIFICATION_LISTENER_SERVICE</code>)</td>
+            </tr>
+            <tr>
+              <td><strong>Notifications from apps you pick</strong> (app name, title, text)</td>
+              <td>Your phone, read-only</td>
+              <td>To mirror a chosen app&rsquo;s alert as a glance on your watch</td>
+              <td>Notification access (<code>BIND_NOTIFICATION_LISTENER_SERVICE</code>)</td>
+            </tr>
+            <tr>
+              <td><strong>Phone battery level</strong></td>
+              <td>Your phone</td>
+              <td>To warn you when your phone&rsquo;s battery is running low</td>
+              <td>&mdash; (local read, no permission)</td>
+            </tr>
+            <tr>
+              <td><strong>Do Not Disturb state</strong></td>
+              <td>Your phone, read-only</td>
+              <td>To mute glances while your phone is in Do Not Disturb</td>
+              <td><code>ACCESS_NOTIFICATION_POLICY</code></td>
             </tr>
             <tr>
               <td><strong>Reminders you create</strong> (text, time, icon)</td>
@@ -99,10 +120,14 @@
         </table>
       </div>
       <p>
-        Brief requests notification access <strong>only to read the active media
-        session</strong> (so it can show now-playing and forward play/pause). It
-        does not read, store, or transmit the content of your other
-        notifications.
+        Notification access is used for two things: to read the <strong>active
+        media session</strong> (so Brief can show now-playing and forward
+        play/pause), and &mdash; <strong>only if you turn on the Notifications
+        source and choose which apps count</strong> &mdash; to mirror those
+        selected apps&rsquo; alerts to your watch. Brief looks only at the apps
+        you pick; notifications from every other app are ignored, never stored,
+        and never uploaded. If you don&rsquo;t enable the Notifications source,
+        notification access is used for media alone.
       </p>
 
       <h2>What leaves your device</h2>
@@ -111,9 +136,11 @@
           <strong>Approximate location &rarr; weather provider.</strong> When
           weather is enabled, Brief sends coordinates to
           <strong>Open-Meteo</strong> (<code>open-meteo.com</code>) over an
-          encrypted (HTTPS) connection to retrieve the forecast. Open-Meteo
-          requires no account or API key. See Open-Meteo&rsquo;s own privacy
-          terms at
+          encrypted (HTTPS) connection to retrieve the forecast. The coordinates
+          are <strong>rounded to about a kilometre</strong> before they leave the
+          phone, so your street-level position is never sent, and Brief keeps
+          <strong>no location history</strong>. Open-Meteo requires no account or
+          API key. See Open-Meteo&rsquo;s own privacy terms at
           <a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">https://open-meteo.com/en/terms</a>.
           If you set a manual location instead of using your phone&rsquo;s
           location, only that manual location is sent. You can disable weather
@@ -126,9 +153,13 @@
         </li>
       </ul>
       <p>
-        Nothing else is sent off your devices. There is <strong>no Brief
-        server</strong> &mdash; calendar titles, media details, reminders, and
-        settings are never uploaded to the developer or any third party.
+        Nothing else is sent off your devices to a third party. There is
+        <strong>no Brief server</strong> &mdash; calendar titles, media details,
+        the alerts you choose to mirror, reminders, and settings are never
+        uploaded to the developer or any third party. (Your settings file can be
+        included in your own device&rsquo;s Android Backup &mdash; a system
+        feature under your Google account that the developer has no access to;
+        see &ldquo;Where data is stored&rdquo; below.)
       </p>
 
       <h2>Between your phone and your watch</h2>
@@ -139,6 +170,15 @@
         This travels directly between your own paired devices over their
         encrypted Bluetooth/Wi-Fi connection. It is not routed through a Brief
         server.
+      </p>
+      <p>
+        When the Notifications source is on, the resolved glance can include a
+        selected app&rsquo;s name and the notification&rsquo;s title and text.
+        Like every other glance, this goes <strong>only to your paired
+        watch</strong> and never to a server; on the phone it is held in memory
+        only &mdash; not written to disk and not included in any backup &mdash;
+        and it clears as soon as the alert is dismissed or you turn Brief&rsquo;s
+        notification access off.
       </p>
       <p>
         If you turn on <strong>&ldquo;mask titles,&rdquo;</strong> event titles
@@ -160,10 +200,28 @@
           dropped within minutes to hours).
         </li>
         <li>
-          This private storage is <strong>excluded from Android cloud backup and
-          device-to-device transfer</strong>, so your weather coordinates and the
-          keywords you choose to hide are not copied off the device by the system
-          backup.
+          <strong>Mirrored notification content is held in memory only.</strong>
+          The app name, title, and text of a selected app&rsquo;s alert live in
+          the phone companion&rsquo;s memory just long enough to show the glance;
+          they are never written to disk or backed up, and they are dropped when
+          the alert is dismissed, its show window ends, or notification access is
+          turned off.
+        </li>
+        <li>
+          <strong>Your settings take part in Android Backup</strong>, so a new or
+          reset phone comes back set up the way you left it. Only the settings
+          file (priority order, source toggles, units, the reminders you created,
+          and the keywords you choose to hide) is backed up. Cloud copies are
+          made <strong>only on devices that can end-to-end encrypt them with your
+          screen lock</strong>, are stored under your own Google account, and are
+          never visible to the developer. Backup is controlled by Android&rsquo;s
+          system Backup setting, which you can turn off at any time.
+        </li>
+        <li>
+          <strong>Everything else stays out of the backup.</strong> The cached
+          weather forecast and its location coordinates, the last resolved
+          glance, any mirrored notification content, and the watch&rsquo;s caches
+          are excluded from Android cloud backup and device-to-device transfer.
         </li>
         <li>Uninstalling Brief removes all of this on-device data.</li>
       </ul>
@@ -171,10 +229,12 @@
       <h2>Data sharing and sale</h2>
       <p>
         Brief does <strong>not</strong> sell your data, share it for advertising,
-        or use it for any purpose other than showing your glance. There are no
-        third-party analytics, advertising, or tracking SDKs in the app. The only
-        third party that receives anything is the weather provider (Open-Meteo),
-        and only the approximate location needed to return a forecast.
+        or use it for any purpose other than showing your glance &mdash; and that
+        includes the alerts mirrored by the Notifications source, which only ever
+        reach your own watch. There are no third-party analytics, advertising, or
+        tracking SDKs in the app. The only third party that receives anything is
+        the weather provider (Open-Meteo), and only the approximate location
+        needed to return a forecast.
       </p>
 
       <h2>Permissions, in plain terms</h2>
@@ -185,21 +245,36 @@
         </li>
         <li>
           <strong>Location (approximate, including in the background):</strong>
-          fetch local weather. Background access lets the forecast refresh while
-          the app isn&rsquo;t open; you can avoid it by setting a manual location
-          or disabling weather.
+          fetch local weather. Brief rounds your coordinates to about a kilometre
+          before sending them and keeps no location history. Background access
+          lets the forecast refresh even while the app is closed; you can avoid it
+          by setting a manual location or disabling weather.
         </li>
         <li>
           <strong>Notification access:</strong> read the active media session for
-          now-playing and transport controls.
+          now-playing and transport controls, and &mdash; when you enable the
+          Notifications source &mdash; mirror alerts from the apps you choose. The
+          same single grant covers both, and Brief reads notifications only from
+          the apps you pick.
         </li>
         <li>
-          <strong>Exact alarms / ignore battery optimizations / run at
-          startup:</strong> wake the companion at the right moments (e.g. when an
-          event is about to start) so the glance is timely, and restore
-          scheduling after a reboot.
+          <strong>Do Not Disturb (read-only):</strong> check whether your phone
+          is in Do Not Disturb so Brief can mute glances while it&rsquo;s on.
+          Brief only reads this state and never changes your Do Not Disturb
+          settings.
+        </li>
+        <li>
+          <strong>Exact alarms / run at startup:</strong> wake the companion at
+          the right moments (e.g. when an event is about to start) so the glance
+          is timely, and restore scheduling after a reboot. Brief may also point
+          you to Android&rsquo;s battery-optimization settings so background
+          refresh isn&rsquo;t delayed, but it does not change them for you.
         </li>
       </ul>
+      <p>
+        The low-battery source reads your phone&rsquo;s own battery level locally
+        and needs no permission.
+      </p>
       <p>
         You can revoke any of these in Android Settings at any time; Brief
         degrades gracefully (the affected source simply stops appearing).
