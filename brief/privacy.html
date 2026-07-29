@@ -25,18 +25,20 @@
 
   <main>
     <h1>Privacy Policy &mdash; Brief</h1>
-    <p class="muted">Last updated: 18 July 2026</p>
+    <p class="muted">Last updated: 29 July 2026</p>
 
     <div class="card">
       <p>
-        Brief is a Wear OS &ldquo;at a glance&rdquo; app: a watch complication
-        and tile that show the single most relevant thing right now &mdash; your
-        now-playing music, an alert from an app you choose, your next calendar
-        event, a low phone-battery warning, the current weather, a scheduled
-        reminder, or today&rsquo;s date. It comes in two parts: the
-        <strong>watch app</strong> (which only displays what it&rsquo;s told) and
-        the <strong>phone companion</strong> (which gathers the information and
-        sends it to your watch).
+        Brief is a Wear OS &ldquo;at a glance&rdquo; app: a watch complication,
+        a tile, and matching widgets (a phone home-screen widget and, on
+        Wear OS 7, a watch widget) that show the single most relevant thing
+        right now &mdash; your now-playing music, an alert from an app you
+        choose, your next calendar event, a low phone-battery warning, the
+        current weather, a scheduled reminder, or today&rsquo;s date. It comes
+        in two parts: the <strong>watch app</strong> (which only displays what
+        it&rsquo;s told) and the <strong>phone companion</strong> (which gathers
+        the information, sends it to your watch, and shows the same glance in
+        its own widget).
       </p>
       <p>
         This policy explains exactly what Brief accesses, why, and where it goes.
@@ -102,7 +104,7 @@
               <td><strong>Do Not Disturb state</strong></td>
               <td>Your phone, read-only</td>
               <td>To mute glances while your phone is in Do Not Disturb</td>
-              <td><code>ACCESS_NOTIFICATION_POLICY</code></td>
+              <td>&mdash; (local read, no permission)</td>
             </tr>
             <tr>
               <td><strong>Reminders you create</strong> (text, time, icon)</td>
@@ -175,10 +177,12 @@
         When the Notifications source is on, the resolved glance can include a
         selected app&rsquo;s name and the notification&rsquo;s title and text.
         Like every other glance, this goes <strong>only to your paired
-        watch</strong> and never to a server; on the phone it is held in memory
-        only &mdash; not written to disk and not included in any backup &mdash;
-        and it clears as soon as the alert is dismissed or you turn Brief&rsquo;s
-        notification access off.
+        watch</strong> and never to a server. On the phone, the winning glance
+        &mdash; including any mirrored notification content &mdash; is kept in
+        Brief&rsquo;s private app storage so the home-screen widget can render
+        it; it is <strong>excluded from every backup</strong>, replaced as soon
+        as a different glance wins (for example, when you dismiss the alert or
+        its show window ends), and deleted when you uninstall Brief.
       </p>
       <p>
         If you turn on <strong>&ldquo;mask titles,&rdquo;</strong> event titles
@@ -191,8 +195,9 @@
       <ul>
         <li>
           All data Brief keeps lives <strong>on-device</strong> in private app
-          storage (Android DataStore): the last resolved glance, a cached weather
-          forecast, and your settings.
+          storage (Android DataStore): the last resolved glance (kept on the
+          phone for the widget and on the watch for the complication and tile),
+          a cached weather forecast, and your settings.
         </li>
         <li>
           The cached weather forecast and now-playing details <strong>expire
@@ -200,12 +205,14 @@
           dropped within minutes to hours).
         </li>
         <li>
-          <strong>Mirrored notification content is held in memory only.</strong>
-          The app name, title, and text of a selected app&rsquo;s alert live in
-          the phone companion&rsquo;s memory just long enough to show the glance;
-          they are never written to disk or backed up, and they are dropped when
-          the alert is dismissed, its show window ends, or notification access is
-          turned off.
+          <strong>Mirrored notification content exists only inside the last
+          resolved glance.</strong> When a selected app&rsquo;s alert is the
+          winning glance, its app name, title, and text are stored as part of
+          that glance in the phone&rsquo;s and the watch&rsquo;s private app
+          storage &mdash; nowhere else. It is replaced as soon as a different
+          glance wins (for example when the alert is dismissed, its show window
+          ends, or you turn notification access off), it is never backed up or
+          transferred to a new device, and uninstalling Brief deletes it.
         </li>
         <li>
           <strong>Your settings take part in Android Backup</strong>, so a new or
@@ -260,8 +267,8 @@
         <li>
           <strong>Do Not Disturb (read-only):</strong> check whether your phone
           is in Do Not Disturb so Brief can mute glances while it&rsquo;s on.
-          Brief only reads this state and never changes your Do Not Disturb
-          settings.
+          Reading this state needs no permission grant, and Brief never changes
+          your Do Not Disturb settings.
         </li>
         <li>
           <strong>Exact alarms / run at startup:</strong> wake the companion at
