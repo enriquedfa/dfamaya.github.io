@@ -3,7 +3,7 @@
 Static site for dfamaya's Wear OS apps — a landing page plus per-app privacy
 policies and support.
 
-Published at: <https://enriquedfa.github.io/dfamaya.github.io/>
+Published at: <https://enriquedfa.github.io/dfamaya/>
 
 ## Pages
 
